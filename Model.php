@@ -50,7 +50,7 @@ function getCalculatedDate($plate, $matriculas) {
         $more = $countOfMatriculas - 1;
         for ($i = 0; $i < $countOfMatriculas; $i++) {
             if ($arrayOfMatriculas[$i]['number'] == $currentPlate['number'])
-                return "<p class=\"text-success\">Estimated time of <strong>\"$plate\"</strong> numbers is: ". date("Y-m-d", $arrayOfMatriculas[$i]['date']) ."</p>";
+                return "<p class=\"text-success\">Estimated time of <strong>\"$plate\"</strong> number is: <strong>". date("Y-m-d", $arrayOfMatriculas[$i]['date']) ."</strong></p>";
             if ($arrayOfMatriculas[$i]['number'] <= $currentPlate['number'] && $arrayOfMatriculas[$i]['number'] > $arrayOfMatriculas[$less]['number'])
                 $less = $i;
             if ($arrayOfMatriculas[$i]['number'] >= $currentPlate['number'] && $arrayOfMatriculas[$i]['number'] < $arrayOfMatriculas[$more]['number'])
@@ -63,7 +63,7 @@ function getCalculatedDate($plate, $matriculas) {
         $timeForNumber = $dateDiff / $numDiff;
         $resultDate = $arrayOfMatriculas[$less]['date'] + ($timeForNumber * ($currentPlate['number'] - $arrayOfMatriculas[$less]['number']));
         $resultDate = date("Y-m-d", $resultDate);
-        return "<p class=\"text-success\">Estimated time of <strong>\"$plate\"</strong> numbers is: $resultDate</p>";
+        return "<p class=\"text-success\">Estimated time of <strong>\"$plate\"</strong> number is: <strong>$resultDate</strong></p>";
     }
     else {
         return "<p class=\"text-danger\">The entered car plate number is incorrect</p>";
